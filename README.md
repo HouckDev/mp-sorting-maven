@@ -4,7 +4,7 @@ An exploration of sorting in Java.
 
 Authors
 
-* Your name here.
+* Paden Houck.
 * Samuel A. Rebelsky (starter code)
 
 Acknowledgements
@@ -15,8 +15,4 @@ This code may be found at <https://github.com/USERNAME/mp-sorting-maven>. The or
 
 Description of custom sorting algorithm
 ---------------------------------------
-
-Notes on using Copilot (or other AI)
-------------------------------------
-
-_This section is optional_
+Based on the counting sort algorithm approach described in https://en.wikipedia.org/wiki/Counting_sort
