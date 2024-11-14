@@ -120,4 +120,54 @@ public class TestSorter {
     ArrayUtils.permute(original);
     assertSorts(expected, original, intSorter);
   } // permutedIntegers
+  
+  @Test
+  public void testRandomInts() {
+    if (null == intSorter) {
+      return;
+    } // if
+    Integer[] original = {1,5,2,4,3};
+    Integer[] expected = {1,2,3,4,5};
+    assertSorts(expected, original, intSorter);
+  } // testRandomInts
+
+  @Test
+  public void testDuplicateInts() {
+    if (null == intSorter) {
+      return;
+    } // if
+    Integer[] original = {1,1,5,2,4,2,3};
+    Integer[] expected = {1,1,2,2,3,4,5};
+    assertSorts(expected, original, intSorter);
+  } // testRandomInts
+  
+  @Test
+  public void testEmpty() {
+    if (null == intSorter) {
+      return;
+    } // if
+    Integer[] original = {};
+    Integer[] expected = {};
+    assertSorts(expected, original, intSorter);
+  } // testEmpty
+  
+  @Test
+  public void testSame() {
+    if (null == intSorter) {
+      return;
+    } // if
+    Integer[] original = {1,1,1,1};
+    Integer[] expected = {1,1,1,1};
+    assertSorts(expected, original, intSorter);
+  } // testSame
+  
+  @Test
+  public void testComplex() {
+    if (null == intSorter) {
+      return;
+    } // if
+    Integer[] original = {1,9,2,1,3,4,3,5,3,6,3,2,8,7,2};
+    Integer[] expected = {1,1,2,2,2,3,3,3,3,4,5,6,7,8,9};
+    assertSorts(expected, original, intSorter);
+  } // testSame
 } // class TestSorter

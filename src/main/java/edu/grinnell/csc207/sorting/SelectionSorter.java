@@ -1,6 +1,7 @@
 package edu.grinnell.csc207.sorting;
 
 import java.util.Comparator;
+import edu.grinnell.csc207.util.ArrayUtils;
 
 /**
  * Something that sorts using selection sort.
@@ -55,6 +56,17 @@ public class SelectionSorter<T> implements Sorter<T> {
    */
   @Override
   public void sort(T[] values) {
+    
+    for (int unsorted = 0; unsorted < values.length; unsorted++) {
+      int max = unsorted;
+      for (int i = unsorted; i < values.length; i++) {
+        if (order.compare(values[max], values[i]) > 0) {
+          max = i;
+        }
+      }
+      ArrayUtils.swap(values, unsorted, max);
+      unsorted++;
+    } // for
     // STUB
   } // sort(T[])
 } // class SelectionSorter
