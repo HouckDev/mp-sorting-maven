@@ -1,7 +1,6 @@
 package edu.grinnell.csc207.sorting;
 
 import java.util.Comparator;
-import edu.grinnell.csc207.main.SortTools;
 import edu.grinnell.csc207.util.ArrayUtils;
 
 /**
