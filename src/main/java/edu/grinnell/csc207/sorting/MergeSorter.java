@@ -1,7 +1,6 @@
 package edu.grinnell.csc207.sorting;
 
 import java.util.Comparator;
-import edu.grinnell.csc207.util.ArrayUtils;
 
 /**
  * Something that sorts using merge sort.
@@ -48,44 +47,72 @@ public class MergeSorter<T> implements Sorter<T> {
    */
   @Override
   public void sort(T[] values) {
-    values = split(values);
+    T[] sorted = split(values);
+    for (int i = 0; i < sorted.length; i++) {
+      values[i] = sorted[i];
+    } // for
   } // sort(T[])
 
+  /**
+   * Split and sort an array.
+   * @param values
+   * @return sorted array
+   */
   T[] split(T[] values) {
     if (values.length <= 1) {
       return values;
-    }
+    } // if
     T[] valuesA = (T[]) new Object[((int) (values.length / 2))];
     for (int i = 0; i < valuesA.length; i++) {
       valuesA[i] = values[i];
-    }
+    } // for
     T[] valuesB = (T[]) new Object[values.length - ((int) (values.length / 2))];
 
     for (int i = valuesA.length; i < values.length; i++) {
       valuesB[i - valuesA.length] = values[i];
-    }
+    } // for
     valuesA = split(valuesA);
     valuesB = split(valuesB);
     T[] merged = merge(valuesA, valuesB);
     return merged;
-  }
+  } // split
 
+  /**
+   * Merge two sub arrays and sort.
+   * @param valuesA
+   * @param valuesB
+   * @return merged array
+   */
   T[] merge(T[] valuesA, T[] valuesB) {
     T[] merged = (T[]) new Object[valuesA.length + valuesB.length];
+
+    int a = 0;
+    int b = 0;
     int sort = 0;
-    for (int compare = 0; compare < valuesA.length; compare++) {
-      for (int i = 0; i < valuesB.length; i++) {
-        if (order.compare(valuesA[compare], valuesB[i]) >= 0) {
-          merged[sort] = valuesB[i];
-          sort++;
-        } else {
-          merged[sort] = valuesA[compare];
-          sort++;
-          break;
-        }
-      }
-    }
+    while (a < valuesA.length || b < valuesB.length) {
+      if (a >= valuesA.length) {
+        merged[sort] = valuesB[b];
+        b++;
+        sort++;
+        continue;
+      } // if
+      if (b >= valuesB.length) {
+        merged[sort] = valuesA[a];
+        a++;
+        sort++;
+        continue;
+      } // if
+      if (order.compare(valuesB[b], valuesA[a]) > 0) {
+        merged[sort] = valuesA[a];
+        a++;
+        sort++;
+      } else {
+        merged[sort] = valuesB[b];
+        b++;
+        sort++;
+      } // if else
+    } // while
     return merged;
 
-  }
+  } // merge
 } // class MergeSorter
