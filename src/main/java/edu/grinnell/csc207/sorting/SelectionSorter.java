@@ -65,7 +65,6 @@ public class SelectionSorter<T> implements Sorter<T> {
         }
       }
       ArrayUtils.swap(values, unsorted, max);
-      unsorted++;
     } // for
     // STUB
   } // sort(T[])
