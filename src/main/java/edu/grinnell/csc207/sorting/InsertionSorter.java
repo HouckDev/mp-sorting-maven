@@ -50,6 +50,7 @@ public class InsertionSorter<T> implements Sorter<T> {
   public void sort(T[] values) {
     for (int i = 1; i < values.length; i++) {
       if (order.compare(values[i - 1], values[i]) > 0) {
+        // backtrack insertion
         ArrayUtils.swap(values, i - 1, i);
         i = Math.max(i - 2, 0);
       } // if
